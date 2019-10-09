@@ -1,23 +1,20 @@
-import React, {Component} from 'react'
+  
+import React from 'react';
 
-export default class Bomb extends Component {
+class Bomb extends React.Component {
 
   state = {
     secondsLeft: this.props.initialCount
   }
 
-  subtractSeconds = (event) => {
-    setInterval(() => {
-      this.setState({secondsLeft: this.state.secondsLeft - 1} )
-    }, 1000);
-  }
-
   render() {
-    return(
-      <div>
-      <p onClick={this.subtractSeconds}> {this.state.secondsLeft}, seconds before I go boom!</p>
-       </div>
+    console.log(this.props)
+    const message = this.state.secondsLeft === 0 ? 'Boom!' : `${this.state.secondsLeft} seconds left before I go boom!`;
+
+    return (
+      <div>{message}</div>
     )
   }
-
 }
+
+export default Bomb;
